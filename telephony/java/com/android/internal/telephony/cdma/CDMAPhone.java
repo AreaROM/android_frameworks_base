@@ -728,14 +728,20 @@ public class CDMAPhone extends PhoneBase {
 
     public String getVoiceMailNumber() {
         String number = null;
+        String cdmaNumber = SystemProperties.get("ro.cdma.voicemail.number");
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getContext());
-        // TODO: The default value of voicemail number should be read from a system property
-
-        // Read platform settings for dynamic voicemail number
-        if (getContext().getResources().getBoolean(com.android.internal
-                .R.bool.config_telephony_use_own_number_for_voicemail)) {
-            number = sp.getString(VM_NUMBER_CDMA, getLine1Number());
+        if (cdmaNumber.length() > 0) {
+            if (cdmaNumber.equals("mine")) {
+                // Workaround for Sprint and similar where we dial our own phone number for voicemail
+                number = sp.getString(VM_NUMBER_CDMA, getLine1Number());
+            }
+            else {
+                // Otherwise we will assign the contents of the variable to the default voicemail number
+                // TODO: Sanity checks
+                number = sp.getString(VM_NUMBER_CDMA, cdmaNumber);
+            }
         } else {
+            // Fall back to *86 if ro.cdma.voicemail.number is not defined.
             number = sp.getString(VM_NUMBER_CDMA, "*86");
         }
         return number;
