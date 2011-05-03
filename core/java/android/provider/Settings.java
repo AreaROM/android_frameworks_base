@@ -1561,6 +1561,742 @@ public final class Settings {
         public static final String FANCY_IME_ANIMATIONS = "fancy_ime_animations";
 
         /**
+         * Whether WebViews reflow content when zooming in by pinching. The value is
+         * boolean (1 or 0).
+         * @hide
+         */
+        public static final String WEB_VIEW_PINCH_REFLOW = "web_view_pinch_reflow";
+
+        /**
+         * Control whether the accelerometer will be used to change screen
+         * orientation.  If 0, it will not be used unless explicitly requested
+         * by the application; if 1, it will be used by default unless explicitly
+         * disabled by the application.
+         */
+        public static final String ACCELEROMETER_ROTATION = "accelerometer_rotation";
+
+         /**
+         * Control weather 180 degree rotation should be included if
+         * ACCELEROMETER_ROTATION is enabled. If 0 no 180 degree rotation will be
+         * executed, if 1 the 180 degree rotation is executed when ACCELEROMETER_ROTATION is true.
+         * @hide
+         */
+        public static final String ACCELEROMETER_ROTATE_180 = "accelerometer_rotate_180";
+
+        /**
+         * Specifies the number of recent apps to show (8, 12, 16)
+         * @hide
+         */
+        public static final String RECENT_APPS_NUMBER = "recent_apps_number";
+
+        /**
+         * Specifies the number of recent apps to show (8, 12, 16)
+         * @hide
+         */
+        public static final String RECENT_APPS_SHOW_TITLE = "recent_apps_show_title";
+
+        /**
+         * Specifies whether or not to use a custom app instead of the recent applications dialog
+         * @hide
+         */
+        public static final String USE_CUSTOM_APP = "use_custom_app";
+
+        /**
+         * Stores the uri of the custom application to use
+         * @hide
+         */
+        public static final String SELECTED_CUSTOM_APP = "selected_custom_app";
+
+        /**
+         * Specifies whether or not to use a custom app on search key press
+         * @hide
+         */
+        public static final String USE_CUSTOM_SEARCH_APP_TOGGLE = "use_custom_search_app_toggle";
+
+        /**
+         * Contains activity to start on search key press
+         * @hide
+         */
+        public static final String USE_CUSTOM_SEARCH_APP_ACTIVITY = "use_custom_search_app_activity";
+
+        /**
+         * Specifies whether or not to use a custom app on long search key press
+         * @hide
+         */
+        public static final String USE_CUSTOM_LONG_SEARCH_APP_TOGGLE = "use_custom_long_search_app_toggle";
+
+        /**
+         * Contains activity to start on long search key press
+         * @hide
+         */
+        public static final String USE_CUSTOM_LONG_SEARCH_APP_ACTIVITY = "use_custom_long_search_app_activity";
+
+        /**
+         * Stores the uri of the defined application for user key 1
+         * @hide
+         */
+        public static final String USER_DEFINED_KEY1_APP = "user_defined_key1_app";
+
+        /**
+         * Stores the uri of the defined application for user key 2
+         * @hide
+         */
+        public static final String USER_DEFINED_KEY2_APP = "user_defined_key2_app";
+
+        /**
+         * Stores the uri of the defined application for user key 3
+         * @hide
+         */
+        public static final String USER_DEFINED_KEY3_APP = "user_defined_key3_app";
+
+        /**
+         * Specifies whether to prompt on the power dialog
+         * @hide
+         */
+        public static final String POWER_DIALOG_PROMPT = "power_dialog_prompt";
+
+        /**
+         * How many ms to delay before enabling the screen lock when the screen
+         * goes off due to timeout
+         *
+         * @hide
+         */
+        public static final String SCREEN_LOCK_TIMEOUT_DELAY = "screen_lock_timeout_delay";
+
+        /**
+         * How many ms to delay before enabling the screen lock when the screen
+         * is turned off by the user
+         *
+         * @hide
+         */
+        public static final String SCREEN_LOCK_SCREENOFF_DELAY = "screen_lock_screenoff_delay";
+
+        /**
+         * Whether the audible DTMF tones are played by the dialer when dialing. The value is
+         * boolean (1 or 0).
+         */
+        public static final String DTMF_TONE_WHEN_DIALING = "dtmf_tone";
+
+        /**
+         * CDMA only settings
+         * DTMF tone type played by the dialer when dialing.
+         *                 0 = Normal
+         *                 1 = Long
+         * @hide
+         */
+        public static final String DTMF_TONE_TYPE_WHEN_DIALING = "dtmf_tone_type";
+
+        /**
+         * CDMA only settings
+         * Emergency Tone  0 = Off
+         *                 1 = Alert
+         *                 2 = Vibrate
+         * @hide
+         */
+        public static final String EMERGENCY_TONE = "emergency_tone";
+
+        /**
+         * CDMA only settings
+         * Whether the auto retry is enabled. The value is
+         * boolean (1 or 0).
+         * @hide
+         */
+        public static final String CALL_AUTO_RETRY = "call_auto_retry";
+
+        /**
+         * Whether the hearing aid is enabled. The value is
+         * boolean (1 or 0).
+         * @hide
+         */
+        public static final String HEARING_AID = "hearing_aid";
+
+        /**
+         * CDMA only settings
+         * TTY Mode
+         * 0 = OFF
+         * 1 = FULL
+         * 2 = VCO
+         * 3 = HCO
+         * @hide
+         */
+        public static final String TTY_MODE = "tty_mode";
+
+        /**
+         * Whether the sounds effects (key clicks, lid open ...) are enabled. The value is
+         * boolean (1 or 0).
+         */
+        public static final String SOUND_EFFECTS_ENABLED = "sound_effects_enabled";
+
+        /**
+         * Whether the haptic feedback (long presses, ...) are enabled. The value is
+         * boolean (1 or 0).
+         */
+        public static final String HAPTIC_FEEDBACK_ENABLED = "haptic_feedback_enabled";
+
+        /**
+         * Whether haptic feedback is enabled on virtual key release (as opposed to pressed)
+         * boolean (1 or 0).
+         * @hide
+         */
+        public static final String HAPTIC_FEEDBACK_UP_ENABLED = "haptic_feedback_up_enabled";
+
+        /**
+         * Whether haptic is also activated for all screen interaction (follows Sound Effects Enabled behaviour)
+         * boolean (1 or 0).
+         * @hide
+         */
+        public static final String HAPTIC_FEEDBACK_ALL_ENABLED = "haptic_feedback_all_enabled";
+
+        /**
+         * Value for haptic down (string will be converted to array -
+         * format is ***"delay in msec before turning on"_"delay in msec before turning off__**repeat**)
+         * @hide
+         */
+        public static final String HAPTIC_DOWN_ARRAY = "haptic_down_array";
+
+        /**
+         * Value for haptic up - same format as _DOWN_ARRAY
+         * @hide
+         */
+        public static final String HAPTIC_UP_ARRAY = "haptic_up_array";
+
+        /**
+         * Value for long presses - same format as _DOWN_ARRAY
+         * @hide
+         */
+        public static final String HAPTIC_LONG_ARRAY = "haptic_long_array";
+
+        /**
+         * these store the ORIGINAL default haptic values from config.xml
+         * this is so HapticAdjust can easily pull them when resetting defaults
+         * these are created and acted on in PhoneWindowManager
+         * @hide
+         */
+        public static final String HAPTIC_DOWN_ARRAY_DEFAULT = "haptic_down_array_default";
+
+        /**
+         * Same as HAPTIC_DOWN_ARRAY_DEFAULT but for key releases
+         * @hide
+         */
+        public static final String HAPTIC_UP_ARRAY_DEFAULT = "haptic_up_array_default";
+
+        /**
+         * Same as HAPTIC_DOWN_ARRAY_DEFAULT but for key releases
+         * @hide
+         */
+        public static final String HAPTIC_LONG_ARRAY_DEFAULT = "haptic_long_array_default";
+
+        /**
+         * Set values for haptic feedback from typing on keypad (new for Froyo)
+         * @hide
+         */
+        public static final String HAPTIC_TAP_ARRAY = "haptic_tap_array";
+
+        /**
+         * Default values for haptic feedback from typing on keypad (new for Froyo) - pulled
+         * from config.xml
+         * @hide
+         */
+        public static final String HAPTIC_TAP_ARRAY_DEFAULT = "haptic_tap_array_default";
+
+        /**
+         * Whether live web suggestions while the user types into search dialogs are
+         * enabled. Browsers and other search UIs should respect this, as it allows
+         * a user to avoid sending partial queries to a search engine, if it poses
+         * any privacy concern. The value is boolean (1 or 0).
+         */
+        public static final String SHOW_WEB_SUGGESTIONS = "show_web_suggestions";
+
+        /**
+         * Whether the notification LED should repeatedly flash when a notification is
+         * pending. The value is boolean (1 or 0).
+         * @hide
+         */
+        public static final String NOTIFICATION_LIGHT_PULSE = "notification_light_pulse";
+
+        /**
+         * Whether the notification LED should repeatedly blink when a notification is
+         * pending. The value is boolean (1 or 0).
+         * @hide
+         */
+        public static final String NOTIFICATION_LIGHT_BLINK = "notification_light_blink";
+
+        /**
+         * Whether to show turn off the notification LED (and charging light
+         * off) when screen is on. The value is boolean (1 or 0).
+         * @hide
+         */
+        public static final String NOTIFICATION_LIGHT_ALWAYS_ON = "notification_light_always_on";
+
+        /**
+         * Whether to turn on the amber LED while charging (and notifications light off).
+         * The value is boolean (1 or 0).
+         * @hide
+         */
+        public static final String NOTIFICATION_LIGHT_CHARGING = "notification_light_charging";
+
+        /**
+         * Show pointer location on screen?
+         * 0 = no
+         * 1 = yes
+         * @hide
+         */
+        public static final String POINTER_LOCATION = "pointer_location";
+
+        /**
+         * Whether to play a sound for low-battery alerts.
+         * @hide
+         */
+        public static final String POWER_SOUNDS_ENABLED = "power_sounds_enabled";
+
+        /**
+         * Whether to play a sound for dock events.
+         * @hide
+         */
+        public static final String DOCK_SOUNDS_ENABLED = "dock_sounds_enabled";
+
+        /**
+         * Whether to play sounds when the keyguard is shown and dismissed.
+         * @hide
+         */
+        public static final String LOCKSCREEN_SOUNDS_ENABLED = "lockscreen_sounds_enabled";
+
+        /**
+         * URI for the low battery sound file.
+         * @hide
+         */
+        public static final String LOW_BATTERY_SOUND = "low_battery_sound";
+
+        /**
+         * URI for the desk dock "in" event sound.
+         * @hide
+         */
+        public static final String DESK_DOCK_SOUND = "desk_dock_sound";
+
+        /**
+         * URI for the desk dock "out" event sound.
+         * @hide
+         */
+        public static final String DESK_UNDOCK_SOUND = "desk_undock_sound";
+
+        /**
+         * URI for the car dock "in" event sound.
+         * @hide
+         */
+        public static final String CAR_DOCK_SOUND = "car_dock_sound";
+
+        /**
+         * URI for the car dock "out" event sound.
+         * @hide
+         */
+        public static final String CAR_UNDOCK_SOUND = "car_undock_sound";
+
+        /**
+         * URI for the "device locked" (keyguard shown) sound.
+         * @hide
+         */
+        public static final String LOCK_SOUND = "lock_sound";
+
+        /**
+         * URI for the "device unlocked" (keyguard dismissed) sound.
+         * @hide
+         */
+        public static final String UNLOCK_SOUND = "unlock_sound";
+
+        /**
+         * Receive incoming SIP calls?
+         * 0 = no
+         * 1 = yes
+         * @hide
+         */
+        public static final String SIP_RECEIVE_CALLS = "sip_receive_calls";
+
+        /**
+         * Call Preference String.
+         * "SIP_ALWAYS" : Always use SIP with network access
+         * "SIP_ADDRESS_ONLY" : Only if destination is a SIP address
+         * "SIP_ASK_ME_EACH_TIME" : Always ask me each time
+         * @hide
+         */
+        public static final String SIP_CALL_OPTIONS = "sip_call_options";
+
+        /**
+         * One of the sip call options: Always use SIP with network access.
+         * @hide
+         */
+        public static final String SIP_ALWAYS = "SIP_ALWAYS";
+
+        /**
+         * One of the sip call options: Only if destination is a SIP address.
+         * @hide
+         */
+        public static final String SIP_ADDRESS_ONLY = "SIP_ADDRESS_ONLY";
+
+        /**
+         * One of the sip call options: Always ask me each time.
+         * @hide
+         */
+        public static final String SIP_ASK_ME_EACH_TIME = "SIP_ASK_ME_EACH_TIME";
+
+        /**
+         * Torch state (flashlight)
+         * @hide
+         */
+        public static final String TORCH_STATE = "torch_state";
+
+        /**
+         * Whether to keep the home app at a higher OOM adjustement
+         * @hide
+         */
+        public static final String LOCK_HOME_IN_MEMORY = "lock_home_in_memory";
+
+        /**
+         * Whether to keep the messaging app at a higher OOM adjustement
+         * @hide
+         */
+        public static final String LOCK_MMS_IN_MEMORY = "lock_mms_in_memory";
+
+        /**
+         * Display style of AM/PM next to clock in status bar
+         * 0: Normal display (Eclair stock)
+         * 1: Small display (Froyo stock)
+         * 2: No display (Gingerbread stock)
+         * default: 2
+         * @hide
+         */
+        public static final String STATUS_BAR_AM_PM = "status_bar_am_pm";
+
+        /**
+         * Whether to show the CM battery percentage implementation instead
+         * of the stock battery icon
+         * 0: don't show / show stock icon instead
+         * 1: show cm battery / dont show stock icon
+         * default: 0
+         * @hide
+         */
+        public static final String STATUS_BAR_CM_BATTERY = "status_bar_cm_battery";
+
+        /**
+         * Whether to show the clock in status bar
+         * of the stock battery icon
+         * 0: don't show the clock
+         * 1: show the clock
+         * default: 1
+         * @hide
+         */
+        public static final String STATUS_BAR_CLOCK = "status_bar_clock";
+
+        /**
+         * Whether to display the status bar on top or bottom
+         * 0: show status bar on top (default for most devices)
+         * 1: show status bar on bottom
+         * default: 0 - can be overridden via CMParts config.xml for some devices
+         * @hide
+         */
+        public static final String STATUS_BAR_BOTTOM = "status_bar_bottom";
+
+        /**
+         * Whether to add a dead zone to the middle of the status bar
+         * 0: no dead zone
+         * 1: enable dead zone
+         * default: 0
+         * @hide
+         */
+        public static final String STATUS_BAR_DEAD_ZONE = "status_bar_dead_zone";
+
+        /**
+         * Whether or not home is displayed in soft buttons.
+         * @hide
+         */
+        public static final String SOFT_BUTTON_SHOW_HOME = "soft_button_show_home";
+
+        /**
+         * Whether or not menu is displayed in soft buttons.
+         * @hide
+         */
+        public static final String SOFT_BUTTON_SHOW_MENU = "soft_button_show_menu";
+
+        /**
+         * Whether or not back is displayed in soft buttons.
+         * @hide
+         */
+        public static final String SOFT_BUTTON_SHOW_BACK = "soft_button_show_back";
+
+        /**
+         * Whether or not search is displayed in soft buttons.
+         * @hide
+         */
+        public static final String SOFT_BUTTON_SHOW_SEARCH = "soft_button_show_search";
+
+        /**
+         * Whether or not QUICK_NA is displayed in soft buttons.
+         * @hide
+         */
+        public static final String SOFT_BUTTON_SHOW_QUICK_NA = "soft_button_show_quick_na";
+
+        /**
+         * Whether to display the soft buttons on left side
+         * 0: shows them default right
+         * 1: shows them left (overlaps with date display when dragging notification area open)
+         * default: 0 - can be overridden via CMParts config.xml for some devices
+         * @hide
+         */
+        public static final String SOFT_BUTTONS_LEFT = "soft_buttons_left";
+
+        /**
+         * Whether to override fullscreen so statusbar always visible
+         * 0: default behavior - fullscreen hides status bar
+         * 1: override fullscreen.
+         * default: 0
+         * @hide
+         */
+        public static final String FULLSCREEN_DISABLED = "fullscreen_disabled";
+
+        /**
+         * Whether to disable lockscreen
+         * 0: default behavior - lockscreen shown when screen off
+         * 1: override lockscreen
+         * default: 0
+         * @hide
+         */
+        public static final String LOCKSCREEN_DISABLED = "lockscreen_disabled";
+
+        /**
+         * Which key triggers unhide of statusbar in fullscreen mode
+         * values described in array.xml of CMParts
+         * default: 0 (power button)
+         * @hide
+         */
+        public static final String UNHIDE_BUTTON = "unhide_button";
+
+        /**
+         * Whether to display extended option (home/menu/back) in power menu
+         * 0: dont extend (default for most devices)
+         * 1: extend
+         * default: 0 - can be overridden via CMParts config.xml for some devices
+         * @hide
+         */
+        public static final String EXTEND_PM = "extend_pm";
+
+        /**
+         * Whether or not home is displayed in the extended power menu.
+         * @hide
+         */
+        public static final String EXTEND_PM_SHOW_HOME = "extend_pm_show_home";
+
+        /**
+         * Whether or not menu is displayed in the extended power menu.
+         * @hide
+         */
+        public static final String EXTEND_PM_SHOW_MENU = "extend_pm_show_menu";
+
+        /**
+         * Whether or not back is displayed in the extended power menu.
+         * @hide
+         */
+        public static final String EXTEND_PM_SHOW_BACK = "extend_pm_show_back";
+
+        /**
+         * Reverses the volume button behavior
+         * 0: press = volume, long-press = user action
+         * 1: press = user action, long-press = volume
+         * default: 0
+         * @hide
+         */
+        public static final String REVERSE_VOLUME_BEHAVIOR = "reverse_volume_behavior";
+
+        /**
+         * Action to be executed on long-press-volume-plus while screen on
+         * 0: none / default action
+         * >0: action defined in arrays.xml of CMParts
+         * default: 0
+         * @hide
+         */
+        public static final String LONG_VOLP_ACTION = "long_volp_action";
+
+        /**
+         * Action to be executed on long-press-volume-minus while screen on
+         * 0: none / default action
+         * >0: action defined in arrays.xml of CMParts
+         * default: 0
+         * @hide
+         */
+        public static final String LONG_VOLM_ACTION = "long_volm_action";
+
+        /**
+         * Action to be executed on pressing both volume bottons while screen on
+         * 0: none / default action
+         * >0: action defined in arrays.xml of CMParts
+         * default: 0
+         * @hide
+         */
+        public static final String VOL_BOTH_ACTION = "vol_both_action";
+
+        /**
+         * Action to be executed on long-press both volume bottons while screen on
+         * 0: none / default action
+         * >0: action defined in arrays.xml of CMParts
+         * default: 0
+         * @hide
+         */
+        public static final String LONG_VOL_BOTH_ACTION = "long_vol_both_action";
+
+        /**
+         * Whether to use compact carrier label layout
+         *
+         * @hide
+         */
+        public static final String STATUS_BAR_COMPACT_CARRIER = "status_bar_compact_carrier";
+
+         /**
+         * Whether to control brightness from status bar
+         *
+         * @hide
+         */
+        public static final String STATUS_BAR_BRIGHTNESS_TOGGLE = "status_bar_brightness_toggle";
+
+        /**
+         * Whether to wake the screen with the trackball. The value is boolean (1 or 0).
+         * @hide
+         */
+        public static final String TRACKBALL_WAKE_SCREEN = "trackball_wake_screen";
+
+        /**
+         * Whether to unlock the screen with the trackball.  The value is boolean (1 or 0).
+         * @hide
+         */
+        public static final String TRACKBALL_UNLOCK_SCREEN = "trackball_unlock_screen";
+
+        /**
+         * Whether to wake the screen with the volume keys. The value is boolean (1 or 0).
+         * @hide
+         */
+        public static final String VOLUME_WAKE_SCREEN = "volume_wake_screen";
+
+        /**
+         * Whether to use the custom quick unlock screen control
+         * @hide
+         */
+        public static final String LOCKSCREEN_QUICK_UNLOCK_CONTROL =
+            "lockscreen_quick_unlock_control";
+
+        /**
+         * Whether to use the custom app on both slider style and rotary style
+         * @hide
+         */
+        public static final String LOCKSCREEN_CUSTOM_APP_TOGGLE = "lockscreen_custom_app_toggle";
+
+        /**
+         * App to launch with custom app toggle enabled
+         * @hide
+         */
+        public static final String LOCKSCREEN_CUSTOM_APP_ACTIVITY = "lockscreen_custom_app_activity";
+
+        /**
+         * 1: Show custom app icon (currently cm logo) as with new patch
+         * 2: Show messaging app icon as in old lockscreen
+         * possibly more in the future (if more png files are drawn)
+         * @hide
+         */
+        public static final String LOCKSCREEN_CUSTOM_ICON_STYLE = "lockscreen_custom_icon_style";
+
+        /**
+         * When enabled, rotary lockscreen switches app starter and unlock, so you can drag down to unlock
+         * @hide
+         */
+        public static final String LOCKSCREEN_ROTARY_UNLOCK_DOWN = "lockscreen_rotary_unlock_down";
+
+        /**
+         * When enabled, directional hint arrows are supressed
+         * @hide
+         */
+        public static final String LOCKSCREEN_ROTARY_HIDE_ARROWS = "lockscreen_rotary_hide_arrows";
+
+        /**
+         * Sets the lockscreen style
+         * @hide
+         */
+        public static final Uri DEFAULT_ALARM_ALERT_URI = getUriFor(ALARM_ALERT);
+
+        /**
+         * Setting to enable Auto Replace (AutoText) in text editors. 1 = On, 0 = Off
+         */
+        public static final String TEXT_AUTO_REPLACE = "auto_replace";
+
+        /**
+         * Setting to enable Auto Caps in text editors. 1 = On, 0 = Off
+         */
+        public static final String TEXT_AUTO_CAPS = "auto_caps";
+
+        /**
+         * Setting to enable Auto Punctuate in text editors. 1 = On, 0 = Off. This
+         * feature converts two spaces to a "." and space.
+         */
+        public static final String TEXT_AUTO_PUNCTUATE = "auto_punctuate";
+
+        /**
+         * Setting to showing password characters in text editors. 1 = On, 0 = Off
+         */
+        public static final String TEXT_SHOW_PASSWORD = "show_password";
+
+        public static final String SHOW_GTALK_SERVICE_STATUS =
+                "SHOW_GTALK_SERVICE_STATUS";
+
+        /**
+         * Name of activity to use for wallpaper on the home screen.
+         */
+        public static final String WALLPAPER_ACTIVITY = "wallpaper_activity";
+
+        /**
+         * Value to specify if the user prefers the date, time and time zone
+         * to be automatically fetched from the network (NITZ). 1=yes, 0=no
+         */
+        public static final String AUTO_TIME = "auto_time";
+
+        /**
+         * Display times as 12 or 24 hours
+         *   12
+         *   24
+         */
+        public static final String TIME_12_24 = "time_12_24";
+
+        /**
+         * Date format string
+         *   mm/dd/yyyy
+         *   dd/mm/yyyy
+         *   yyyy/mm/dd
+         */
+        public static final String DATE_FORMAT = "date_format";
+
+        /**
+         * Whether the setup wizard has been run before (on first boot), or if
+         * it still needs to be run.
+         *
+         * nonzero = it has been run in the past
+         * 0 = it has not been run in the past
+         */
+        public static final String SETUP_WIZARD_HAS_RUN = "setup_wizard_has_run";
+
+        /**
+         * Scaling factor for normal window animations. Setting to 0 will disable window
+         * animations.
+         */
+        public static final String WINDOW_ANIMATION_SCALE = "window_animation_scale";
+
+        /**
+         * Scaling factor for activity transition animations. Setting to 0 will disable window
+         * animations.
+         */
+        public static final String TRANSITION_ANIMATION_SCALE = "transition_animation_scale";
+
+        /**
+         * Scaling factor for normal window animations. Setting to 0 will disable window
+         * animations.
+         * @hide
+         */
+        public static final String FANCY_IME_ANIMATIONS = "fancy_ime_animations";
+
+        /**
          * Control whether the accelerometer will be used to change screen
          * orientation.  If 0, it will not be used unless explicitly requested
          * by the application; if 1, it will be used by default unless explicitly
