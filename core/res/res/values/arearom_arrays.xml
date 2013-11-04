@@ -15,17 +15,21 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- label for item that screenshots in phone options dialog -->
-    <string name="global_action_screenshot">Screenshot</string>
+    <!-- Defines the shutdown options shown in the reboot dialog. -->
+    <array name="shutdown_reboot_options" translatable="false">
+        <item>@string/reboot_reboot</item>
+        <item>@string/reboot_soft</item>
+        <item>@string/reboot_recovery</item>
+        <item>@string/reboot_bootloader</item>
+    </array>
 
-    <!-- Reboot menu -->
-    <!-- Button to reboot the phone, within the Reboot Options dialog -->
-    <string name="reboot_reboot">Reboot</string>
-    <!-- Button to reboot the phone into recovery, within the Reboot Options dialog -->
-    <string name="reboot_recovery">Recovery</string>
-    <!-- Button to reboot the phone into bootloader, within the Reboot Options dialog -->
-    <string name="reboot_bootloader">Bootloader</string>
-    <!-- Button to soft reboot the device, within the Reboot Options dialog -->
-    <string name="reboot_soft">Soft reboot</string>
+    <!-- Do not translate. Defines the shutdown actions passed to the kernel.
+         The first item should be empty for regular reboot. -->
+    <string-array name="shutdown_reboot_actions" translatable="false">
+        <item></item>
+        <item>soft_reboot</item>
+        <item>recovery</item>
+        <item>bootloader</item>
+     </string-array>
 
-</resources>
+ </resources>
