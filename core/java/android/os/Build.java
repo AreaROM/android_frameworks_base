@@ -65,6 +65,12 @@ public class Build {
     /** A hardware serial number, if available.  Alphanumeric only, case-insensitive. */ 
     public static final String SERIAL = getString("ro.serialno");
   
+    /** A custom string meant for displaying the productioin version of the device */
+    public static final String AREAROM = getString("ro.arearom.version");
+
+    /** A custom string meant for displaying the date of compilation */
+    public static final String MODVERSION = getString("ro.modversion");
+
     /** Various version strings. */
     public static class VERSION {
         /**
