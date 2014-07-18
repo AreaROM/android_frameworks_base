@@ -275,7 +275,6 @@ public class AudioSystem
     public static final int DEVICE_OUT_SPDIF = 0x80000;
     public static final int DEVICE_OUT_FM = 0x100000;
     public static final int DEVICE_OUT_AUX_LINE = 0x200000;
-    public static final int DEVICE_OUT_SPEAKER_SAFE = 0x400000;
     public static final int DEVICE_OUT_FM_TX = 0x1000000;
     public static final int DEVICE_OUT_PROXY = 0x2000000;
 
@@ -303,7 +302,6 @@ public class AudioSystem
                                               DEVICE_OUT_SPDIF |
                                               DEVICE_OUT_FM |
                                               DEVICE_OUT_AUX_LINE |
-                                              DEVICE_OUT_SPEAKER_SAFE |
                                               DEVICE_OUT_FM_TX |
                                               DEVICE_OUT_PROXY |
                                               DEVICE_OUT_DEFAULT);
@@ -404,27 +402,6 @@ public class AudioSystem
     public static final String DEVICE_OUT_SPDIF_NAME = "spdif";
     public static final String DEVICE_OUT_FM_NAME = "fm_transmitter";
     public static final String DEVICE_OUT_AUX_LINE_NAME = "aux_line";
-    public static final String DEVICE_OUT_SPEAKER_SAFE_NAME = "speaker_safe";
-
-    public static final String DEVICE_IN_COMMUNICATION_NAME = "communication";
-    public static final String DEVICE_IN_AMBIENT_NAME = "ambient";
-    public static final String DEVICE_IN_BUILTIN_MIC_NAME = "mic";
-    public static final String DEVICE_IN_BLUETOOTH_SCO_HEADSET_NAME = "bt_sco_hs";
-    public static final String DEVICE_IN_WIRED_HEADSET_NAME = "headset";
-    public static final String DEVICE_IN_AUX_DIGITAL_NAME = "aux_digital";
-    public static final String DEVICE_IN_TELEPHONY_RX_NAME = "telephony_rx";
-    public static final String DEVICE_IN_BACK_MIC_NAME = "back_mic";
-    public static final String DEVICE_IN_REMOTE_SUBMIX_NAME = "remote_submix";
-    public static final String DEVICE_IN_ANLG_DOCK_HEADSET_NAME = "analog_dock";
-    public static final String DEVICE_IN_DGTL_DOCK_HEADSET_NAME = "digital_dock";
-    public static final String DEVICE_IN_USB_ACCESSORY_NAME = "usb_accessory";
-    public static final String DEVICE_IN_USB_DEVICE_NAME = "usb_device";
-    public static final String DEVICE_IN_FM_TUNER_NAME = "fm_tuner";
-    public static final String DEVICE_IN_TV_TUNER_NAME = "tv_tuner";
-    public static final String DEVICE_IN_LINE_NAME = "line";
-    public static final String DEVICE_IN_SPDIF_NAME = "spdif";
-    public static final String DEVICE_IN_BLUETOOTH_A2DP_NAME = "bt_a2dp";
-    public static final String DEVICE_IN_LOOPBACK_NAME = "loopback";
     public static final String DEVICE_OUT_FM_TX_NAME = "fm_tx";
     public static final String DEVICE_OUT_PROXY_NAME = "proxy";
 
@@ -475,8 +452,6 @@ public class AudioSystem
             return DEVICE_OUT_FM_NAME;
         case DEVICE_OUT_AUX_LINE:
             return DEVICE_OUT_AUX_LINE_NAME;
-        case DEVICE_OUT_SPEAKER_SAFE:
-            return DEVICE_OUT_SPEAKER_SAFE_NAME;
         case DEVICE_OUT_FM_TX:
             return DEVICE_OUT_FM_TX_NAME;
         case DEVICE_OUT_PROXY:
