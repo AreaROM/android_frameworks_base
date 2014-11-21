@@ -295,16 +295,28 @@ public final class ShutdownThread extends Thread {
             sIsStarted = true;
         }
 
-        // throw up an indeterminate system dialog to indicate radio is
-        // shutting down.
-        ProgressDialog pd = new ProgressDialog(context);
-        pd.setTitle(context.getText(com.android.internal.R.string.power_off));
-        pd.setMessage(context.getText(com.android.internal.R.string.shutdown_progress));
-        pd.setIndeterminate(true);
-        pd.setCancelable(false);
-        pd.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
+        //acquire audio focus to make the other apps to stop playing muisc
+        mAudioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        mAudioManager.requestAudioFocus(null,
+                AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN);
 
-        pd.show();
+        if (!checkAnimationFileExist()) {
+            // throw up an indeterminate system dialog to indicate radio is
+            // shutting down.
+            ProgressDialog pd = new ProgressDialog(context);
+            if (mReboot) {
+                pd.setTitle(context.getText(com.android.internal.R.string.reboot_title));
+                pd.setMessage(context.getText(com.android.internal.R.string.reboot_progress));
+            } else {
+                pd.setTitle(context.getText(com.android.internal.R.string.power_off));
+                pd.setMessage(context.getText(com.android.internal.R.string.shutdown_progress));
+            }
+            pd.setIndeterminate(true);
+            pd.setCancelable(false);
+            pd.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
+
+            pd.show();
+        }
 
         sInstance.mContext = context;
         sInstance.mPowerManager = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
