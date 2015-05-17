@@ -122,7 +122,13 @@ interface IPackageManager {
 
     List<PackageInfo> getInstalledThemePackages();
 
-    List<ApplicationInfo> getInstalledApplications(int flags);
+    /**
+     * This implements getInstalledApplications via a "last returned row"
+     * mechanism that is not exposed in the API. This is to get around the IPC
+     * limit that kicks in when flags are included that bloat up the data
+     * returned.
+     */
+    ParceledListSlice getInstalledApplications(int flags, in String lastRead);
 
     /**
      * Retrieve all applications that are marked as persistent.
