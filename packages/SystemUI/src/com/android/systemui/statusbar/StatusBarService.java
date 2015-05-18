@@ -187,6 +187,9 @@ public class StatusBarService extends Service implements CommandQueue.Callbacks 
     int mViewDelta;
     int[] mAbsPos = new int[2];
 
+    // for disabling the status bar
+    int mDisabled = 0
+
     // for brightness control on status bar
     int mLinger = 0;
 
