@@ -2403,7 +2403,16 @@ class PackageManagerService extends IPackageManager.Stub {
     public List<PackageInfo> getInstalledThemePackages() {
         // Returns a list of theme APKs.
         ArrayList<PackageInfo> finalList = new ArrayList<PackageInfo>();
-        List<PackageInfo> installedPackagesList = getInstalledPackages(0);
+        List<PackageInfo> installedPackagesList = new ArrayList<PackageInfo>();
+        PackageInfo lastItem = null;
+        ParceledListSlice<PackageInfo> slice;
+
+        do {
+            final String lastKey = lastItem != null ? lastItem.packageName : null;
+            slice = getInstalledPackages(0, lastKey);
+            lastItem = slice.populateList(installedPackagesList, PackageInfo.CREATOR);
+        } while (!slice.isLastSlice());
+
         Iterator<PackageInfo> i = installedPackagesList.iterator();
         while (i.hasNext()) {
             final PackageInfo pi = i.next();
@@ -2411,31 +2420,39 @@ class PackageManagerService extends IPackageManager.Stub {
                 finalList.add(pi);
             }
         }
+
         return finalList;
     }
 
-    public List<ApplicationInfo> getInstalledApplications(int flags) {
-        ArrayList<ApplicationInfo> finalList = new ArrayList<ApplicationInfo>();
-        synchronized(mPackages) {
-            if((flags & PackageManager.GET_UNINSTALLED_PACKAGES) != 0) {
-                Iterator<PackageSetting> i = mSettings.mPackages.values().iterator();
-                while (i.hasNext()) {
-                    final PackageSetting ps = i.next();
-                    ApplicationInfo ai = generateApplicationInfoFromSettingsLP(ps.name, flags);
-                    if(ai != null) {
-                        finalList.add(ai);
-                    }
-                }
+    public ParceledListSlice<ApplicationInfo> getInstalledApplications(int flags, String lastRead) {
+        final ParceledListSlice<ApplicationInfo> list = new ParceledListSlice<ApplicationInfo>();
+        final boolean listUninstalled = (flags & PackageManager.GET_UNINSTALLED_PACKAGES) != 0;
+        final String[] keys;
+
+        synchronized (mPackages) {
+            if (listUninstalled) {
+                keys = mSettings.mPackages.keySet().toArray(new String[mSettings.mPackages.size()]);
+            } else {
+                keys = mPackages.keySet().toArray(new String[mPackages.size()]);
             }
-            else {
-                Iterator<PackageParser.Package> i = mPackages.values().iterator();
-                while (i.hasNext()) {
-                    final PackageParser.Package p = i.next();
-                    if (p.applicationInfo != null) {
-                        ApplicationInfo ai = PackageParser.generateApplicationInfo(p, flags);
-                        if(ai != null) {
-                            finalList.add(ai);
-                        }
+
+            Arrays.sort(keys);
+            int i = getContinuationPoint(keys, lastRead);
+            final int N = keys.length;
+
+            while (i < N) {
+                final String packageName = keys[i++];
+
+                ApplicationInfo ai = null;
+                if (listUninstalled) {
+                    final PackageSetting ps = mSettings.mPackages.get(packageName);
+                    if (ps != null) {
+                        ai = generateApplicationInfoFromSettingsLP(ps.name, flags);
+                    }
+                } else {
+                    final PackageParser.Package p = mPackages.get(packageName);
+                    if (p != null) {
+                        ai = PackageParser.generateApplicationInfo(p, flags);
                     }
                 }
 

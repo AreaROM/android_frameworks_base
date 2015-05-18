@@ -2006,7 +2006,7 @@ class ContextImpl extends Context {
                 throw new RuntimeException("Package manager has died", e);
             }
         }
-        
+
         @Override
         public int getUidForSharedUser(String sharedUserName) 
                 throws NameNotFoundException {
@@ -2051,6 +2051,7 @@ class ContextImpl extends Context {
             }
         }
 
+        @SuppressWarnings("unchecked")
         @Override
         public List<ApplicationInfo> getInstalledApplications(int flags) {
             try {
