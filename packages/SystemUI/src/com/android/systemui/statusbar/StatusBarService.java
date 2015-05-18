@@ -22,8 +22,6 @@ import com.android.internal.statusbar.IStatusBarService;
 import com.android.internal.statusbar.StatusBarIcon;
 import com.android.internal.statusbar.StatusBarIconList;
 import com.android.internal.statusbar.StatusBarNotification;
-import com.android.systemui.statusbar.CmBatteryMiniIcon.SettingsObserver;
-import com.android.systemui.statusbar.powerwidget.PowerWidget;
 import com.android.systemui.R;
 import android.os.IPowerManager;
 import android.provider.Settings.SettingNotFoundException;
@@ -74,6 +72,8 @@ import android.widget.RemoteViews;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.FrameLayout;
+import android.provider.Settings;
+import android.provider.Settings.SettingNotFoundException;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
