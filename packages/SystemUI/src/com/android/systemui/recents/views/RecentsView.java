@@ -67,6 +67,7 @@ public class RecentsView extends FrameLayout implements TaskStackView.TaskStackV
     ArrayList<TaskStack> mStacks;
     View mSearchBar;
     RecentsViewCallbacks mCb;
+    View mClearRecents;
 
     public RecentsView(Context context) {
         super(context);
@@ -150,17 +151,6 @@ public class RecentsView extends FrameLayout implements TaskStackView.TaskStackV
 
         // Trigger a new layout
         requestLayout();
-    }
-
-    public void dismissAllTasksAnimated() {
-        int childCount = getChildCount();
-        for (int i = 0; i < childCount; i++) {
-            View child = getChildAt(i);
-            if (child != mSearchBar) {
-                TaskStackView stackView = (TaskStackView) child;
-                //stackView.dismissAllTasks();
-            }
-        }
     }
 
     public void dismissAllTasksAnimated() {
