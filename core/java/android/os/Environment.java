@@ -513,6 +513,11 @@ public class Environment {
     public static String DIRECTORY_DOCUMENTS = "Documents";
 
     /**
+     * Standard directory inhabited by the hack, Multirom
+     */
+    public static String DIRECTORY_MULTIROM = "multirom";
+
+    /**
      * Get a top-level public external storage directory for placing files of
      * a particular type.  This is where the user will typically place and
      * manage their own files, so you should be careful about what you put here
